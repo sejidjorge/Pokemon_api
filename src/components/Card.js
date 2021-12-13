@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-// import Button from '@mui/material/Button';
+import { Button } from "@mui/material";
 
 export default function Card(){
 
@@ -21,19 +21,20 @@ export default function Card(){
     }, [next])
     
     return(
-        <ul>
-
-           
+        <ul>     
         {listPokemon?.map((value,index) =>(
             <li>
                 <p key={index}>{index} Pokemon: {value.name}</p>
             </li>
         ))}
-        {/* <div className="w-screen h-screen bg-"/>
-        <input type="search" onChange={(e) => setSearch(e.target.value)}/> */}
-        <button type="button" onClick={() => setNext(next+10)}>
+        
+        <Button onClick={() => setNext(next > 0 && next-10)} variant="outlined">
+        Anterior
+        </Button>
+
+        <Button onClick={() => setNext(next+10)} variant="outlined">
         Proximo
-        </button>
+        </Button>
      </ul>
 
     );
