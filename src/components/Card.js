@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import { Button } from "@mui/material";
+import { Button, Card } from "@mui/material";
 
-export default function Card(){
+export default function UserCard(){
 
     const [next, setNext] = useState(0)
 
@@ -21,21 +21,25 @@ export default function Card(){
     }, [next])
     
     return(
-        <ul>     
-        {listPokemon?.map((value,index) =>(
-            <li>
-                <p key={index}>{index} Pokemon: {value.name}</p>
-            </li>
-        ))}
-        
-        <Button onClick={() => setNext(next > 0 && next-10)} variant="outlined">
-        Anterior
-        </Button>
-
-        <Button onClick={() => setNext(next+10)} variant="outlined">
-        Proximo
-        </Button>
-     </ul>
+    <div className="container">
+            {listPokemon?.map((value,index) =>(
+            <div className="m-1 p-1">
+                <Card>
+                    <h1 key={index} >Pokemon</h1>
+                    <p>Nome: {value.name}</p>
+                </Card>
+            </div>
+            ))}
+    
+        <div className="flex justify-around">
+            <Button onClick={() => setNext(next > 0 && next-10)} variant="outlined">
+            Anterior
+            </Button>
+            <Button onClick={() => setNext(next+10)} variant="outlined">
+            Proximo
+            </Button>
+        </div>
+    </div>
 
     );
        
