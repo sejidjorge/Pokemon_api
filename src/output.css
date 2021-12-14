@@ -424,6 +424,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .container {
   width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 2rem;
+  padding-left: 2rem;
 }
 
 @media (min-width: 640px) {
@@ -456,12 +460,36 @@ Ensure the default browser behavior of the `hidden` attribute.
   }
 }
 
+.m-4 {
+  margin: 1rem;
+}
+
+.m-10 {
+  margin: 2.5rem;
+}
+
+.m-20 {
+  margin: 5rem;
+}
+
+.m-12 {
+  margin: 3rem;
+}
+
 .m-1 {
   margin: 0.25rem;
 }
 
-.m-4 {
-  margin: 1rem;
+.m-6 {
+  margin: 1.5rem;
+}
+
+.mt-0 {
+  margin-top: 0px;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
 }
 
 .mt-4 {
@@ -480,6 +508,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 100vh;
 }
 
+.min-h-min {
+  min-height: -webkit-min-content;
+  min-height: min-content;
+}
+
 .w-screen {
   width: 100vw;
 }
@@ -488,16 +521,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.grid-cols-4 {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.grid-rows-5 {
-  grid-template-rows: repeat(5, minmax(0, 1fr));
+.grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .items-center {
@@ -516,20 +541,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   gap: 1rem;
 }
 
-.gap-2 {
-  gap: 0.5rem;
-}
-
 .bg-gray-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
 
-.p-1 {
-  padding: 0.25rem;
-}
-
-.text-red-900 {
-  --tw-text-opacity: 1;
-  color: rgb(127 29 29 / var(--tw-text-opacity));
+.p-6 {
+  padding: 1.5rem;
 }
