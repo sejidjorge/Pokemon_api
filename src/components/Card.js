@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import { Button, Card, Typography } from "@mui/material";
+import { Button, Card, CardMedia, Typography } from "@mui/material";
 
 export default function UserCard(){
 
@@ -20,7 +20,7 @@ export default function UserCard(){
 
     useEffect(() => {
 
-        axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${next}`).then((response) =>{
+        axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=24&offset=${next}`).then((response) =>{
             setlistPokemon([...response.data?.results])
     })
     }, [next]);
@@ -28,22 +28,22 @@ export default function UserCard(){
     return(
     <>
         <div className="container">
-            <div className="flex justify-center items-center">
-                    <div className="grid grid-cols-5 gap-4">
+            <div className="flex justify-center mt-4">
+                    <div className="grid grid-cols-6 gap-4">
                         {listPokemon?.map((value, index) => (
                             <div>
-                                <Card key={index} style={{height: '22vh', width: '15vw'}}>
+                                <Card key={index} className="min-h-min items-center" style={{width: '12vw'}}>
                                     <Typography gutterBottom variant="h5" component="div">Pokemon</Typography>
                                     <Typography gutterBottom variant="p" component="div" >Nome: {value.name}</Typography>
-
                                     {value?.name === pokemon?.name ? 
                                         pokemon?.abilities.map((ability, index) => (
                                             <Typography gutterBottom variant="p" component="div" key={index}>{index+1+"°"} Habilidade: {ability.ability.name}</Typography>
                                             ))
                                     : null}
-                                    <Button className="m-4" onClick={() => selectPokemon(value.name)} variant="contained">
+                                        <Button className="m-4" onClick={() => selectPokemon(value.name)} variant="contained" size="small">
                                         Ver mais
-                                    </Button>
+                                        </Button>
+                                    
                                 </Card>
                             </div>
                         ))}
@@ -51,11 +51,11 @@ export default function UserCard(){
                 </div>
                 <div className="flex justify-around m-4">
                     {next > 0 && (
-                        <Button className="m-4" onClick={() => setNext(next > 0 && next - 20)} variant="contained">
+                        <Button className="m-4" onClick={() => setNext(next > 0 && next - 24)} variant="contained">
                         Anterior
                         </Button>
                     )}
-                    <Button className="m-4" onClick={() => setNext(next + 20)} variant="contained">
+                    <Button className="m-4" onClick={() => setNext(next + 24)} variant="contained">
                         Proximo
                     </Button>
                 </div>
