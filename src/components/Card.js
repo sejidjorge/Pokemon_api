@@ -15,32 +15,34 @@ export default function UserCard(){
 
     useEffect(() => {
 
-        axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=${next}`).then((response) =>{
+        axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${next}`).then((response) =>{
             setlistPokemon([...response.data?.results])
     })
     }, [next])
     
     return(
-    <div className="container">
-            {listPokemon?.map((value,index) =>(
-            <div className="m-1 p-1">
-                <Card>
-                    <h1 key={index} >Pokemon</h1>
-                    <p>Nome: {value.name}</p>
-                </Card>
+    <><div className="flex items-center justify-center">
+            <div className="grid grid-cols-5 gap-4">
+                {listPokemon?.map((value, index) => (
+                    <div>
+                        <Card>
+                            <h1 key={index}>Pokemon</h1>
+                            <p>Nome: {value.name}</p>
+                        </Card>
+                    </div>
+                ))}
             </div>
-            ))}
-    
-        <div className="flex justify-around">
-            <Button onClick={() => setNext(next > 0 && next-10)} variant="outlined">
-            Anterior
-            </Button>
-            <Button onClick={() => setNext(next+10)} variant="outlined">
-            Proximo
-            </Button>
         </div>
-    </div>
-
+        <div className="flex items-center justify-center">
+            <div className="flex justify-around m-4">
+                    <Button className="m-4" onClick={() => setNext(next > 0 && next - 20)} variant="contained">
+                        Anterior
+                    </Button>
+                    <Button className="m-4" onClick={() => setNext(next + 20)} variant="contained">
+                        Proximo
+                    </Button>
+            </div>
+        </div></>
     );
        
 }
