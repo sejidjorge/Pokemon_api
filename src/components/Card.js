@@ -21,7 +21,7 @@ export default function UserCard(){
             <div className="flex justify-center mt-4">
                     <div className="grid grid-cols-1 gap-1">
                             <div>
-                                <Card className="min-h-min" style={{ width: '32vw'}}>
+                                <Card className="min-h-min">
                                     <Typography gutterBottom variant="h5" component="div">{pokemon?.name}</Typography>
                                     <div>
                                     <Typography gutterBottom variant="p" component="div">Habilidades: </Typography>
