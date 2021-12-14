@@ -22,7 +22,7 @@ export default function UserCard(){
                     <div className="grid grid-cols-1 gap-1">
                             <div>
                                 <Card className="min-h-min">
-                                    <Typography gutterBottom variant="h5" component="div">{pokemon?.name}</Typography>
+                                    <Typography className="font-bold capitalize" gutterBottom variant="h5" component="div">{pokemon?.name}</Typography>
                                     <div>
                                     <Typography gutterBottom variant="p" component="div">Habilidades: </Typography>
                                     {pokemon?.name && 
