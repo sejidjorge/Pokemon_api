@@ -23,17 +23,32 @@ export default function UserCard(){
                             <div>
                                 <Card className="min-h-min">
                                     <Typography className="font-bold capitalize" gutterBottom variant="h5" component="div">{pokemon?.name}</Typography>
-                                    <div>
-                                    <Typography gutterBottom variant="p" component="div">Habilidades: </Typography>
-                                    {pokemon?.name && 
-                                        pokemon?.abilities.map((ability, index) => (
-                                            <><Typography className="text-sm" gutterBottom variant="p" component="div" key={index}>{ability.ability.name}</Typography></>
-                                            ))
-                                    }
+                                    <div className="felx grid grid-cols-2 gap-3">
+                                        <div className="ml-2">
+                                            <Typography gutterBottom variant="p" component="div">Tipo:</Typography>
+                                            {pokemon?.types.map((type, index) => (
+                                                <Typography className="text-sm text-left" gutterBottom variant="p" component="div" key={index}>
+                                                    {type.type.name}
+                                                </Typography>
+                                            ))}
+                                        </div>
+                                        <div className="ml-2">
+                                            <Typography gutterBottom variant="p" component="div">Habilidades: </Typography>
+                                            {pokemon?.abilities.map((ability, index) => (
+                                                    <><Typography className="text-sm text-left" gutterBottom variant="p" component="div" key={index}>{ability.ability.name}</Typography></>
+                                                    ))
+                                            }
+                                        </div>
+                                        <div className="ml-2">
+                                            <Typography gutterBottom variant="p" component="div">Estatisticas:</Typography>
+                                            {pokemon?.stats.map((stat, index) => (
+                                                <Typography className="text-sm text-left" gutterBottom variant="p" component="div" key={index}>
+                                                {stat.stat.name}:{stat.base_stat}
+                                            </Typography>
+                                            ) )}
+                                        </div>
                                     </div>
-                                    <div>
-                                    </div>
-                                    {pokemon?.name && 
+                                    {
                                         <CardMedia
                                         component="img"
                                         style={{width: '100%'}}
