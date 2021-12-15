@@ -25,33 +25,36 @@ export default function UserCard(){
                                     <Typography className="font-bold capitalize" gutterBottom variant="h5" component="div">{pokemon?.name}</Typography>
                                     <div className="felx grid grid-cols-2 gap-3">
                                         <div className="ml-2">
-                                            <Typography gutterBottom variant="p" component="div">Tipo:</Typography>
+                                            <Typography gutterBottom className="font-bold capitalize" variant="p" component="div">Tipo:</Typography>
                                             {pokemon?.types.map((type, index) => (
-                                                <Typography className="text-sm text-left" gutterBottom variant="p" component="div" key={index}>
+                                                <Typography className="text-sm text-left capitalize" variant="p" component="div" key={index}>
                                                     {type.type.name}
                                                 </Typography>
                                             ))}
                                         </div>
                                         <div className="ml-2">
-                                            <Typography gutterBottom variant="p" component="div">Habilidades: </Typography>
+                                            <Typography gutterBottom className="font-bold capitalize"  variant="p" component="div">Habilidades: </Typography>
                                             {pokemon?.abilities.map((ability, index) => (
-                                                    <><Typography className="text-sm text-left" gutterBottom variant="p" component="div" key={index}>{ability.ability.name}</Typography></>
+                                                    <><Typography className="text-sm text-left capitalize" variant="p" component="div" key={index}>{ability.ability.name}</Typography></>
                                                     ))
                                             }
                                         </div>
                                         <div className="ml-2">
-                                            <Typography gutterBottom variant="p" component="div">Estatisticas:</Typography>
-                                            {pokemon?.stats.map((stat, index) => (
-                                                <Typography className="text-sm text-left" gutterBottom variant="p" component="div" key={index}>
-                                                {stat.stat.name}:{stat.base_stat}
-                                            </Typography>
-                                            ) )}
+                                            <Typography gutterBottom className="font-bold capitalize" variant="p" component="div">Estatisticas:</Typography>
+                                                <div className="justify-between grid grid-cols-2 gap-2">
+                                                {pokemon?.stats.map((stat, index) => (
+                                                    <Typography className="text-sm text-left capitalize" variant="p" component="div" key={index}>
+                                                    <span className="font-bold">{stat.stat.name}</span>: {stat.base_stat}
+                                                </Typography>
+                                                ) )}
+                                                </div>
                                         </div>
                                     </div>
                                     {
                                         <CardMedia
+                                        className="m-auto"
                                         component="img"
-                                        style={{width: '100%'}}
+                                        style={{width: '74%'}}
                                         image={pokemon?.sprites?.other["official-artwork"].front_default}
                                         alt=""
                                             />
