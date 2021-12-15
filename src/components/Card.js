@@ -22,21 +22,39 @@ export default function UserCard(){
                     <div className="grid grid-cols-1 gap-1">
                             <div>
                                 <Card className="min-h-min">
-                                    <Typography gutterBottom variant="h5" component="div">{pokemon?.name}</Typography>
-                                    <div>
-                                    <Typography gutterBottom variant="p" component="div">Habilidades: </Typography>
-                                    {pokemon?.name && 
-                                        pokemon?.abilities.map((ability, index) => (
-                                            <><Typography className="text-sm" gutterBottom variant="p" component="div" key={index}>{ability.ability.name}</Typography></>
-                                            ))
-                                    }
+                                    <Typography className="font-bold capitalize" gutterBottom variant="h5" component="div">{pokemon?.name}</Typography>
+                                    <div className="felx grid grid-cols-2 gap-3">
+                                        <div className="ml-2">
+                                            <Typography gutterBottom className="font-bold capitalize" variant="p" component="div">Tipo:</Typography>
+                                            {pokemon?.types.map((type, index) => (
+                                                <Typography className="text-sm text-left capitalize" variant="p" component="div" key={index}>
+                                                    {type.type.name}
+                                                </Typography>
+                                            ))}
+                                        </div>
+                                        <div className="ml-2">
+                                            <Typography gutterBottom className="font-bold capitalize"  variant="p" component="div">Habilidades: </Typography>
+                                            {pokemon?.abilities.map((ability, index) => (
+                                                    <><Typography className="text-sm text-left capitalize" variant="p" component="div" key={index}>{ability.ability.name}</Typography></>
+                                                    ))
+                                            }
+                                        </div>
+                                        <div className="ml-2">
+                                            <Typography gutterBottom className="font-bold capitalize" variant="p" component="div">Estatisticas:</Typography>
+                                                <div className="justify-between grid grid-cols-2 gap-2">
+                                                {pokemon?.stats.map((stat, index) => (
+                                                    <Typography className="text-sm text-left capitalize" variant="p" component="div" key={index}>
+                                                    <span className="font-bold">{stat.stat.name}</span>: {stat.base_stat}
+                                                </Typography>
+                                                ) )}
+                                                </div>
+                                        </div>
                                     </div>
-                                    <div>
-                                    </div>
-                                    {pokemon?.name && 
+                                    {
                                         <CardMedia
+                                        className="m-auto"
                                         component="img"
-                                        style={{width: '100%'}}
+                                        style={{width: '74%'}}
                                         image={pokemon?.sprites?.other["official-artwork"].front_default}
                                         alt=""
                                             />
