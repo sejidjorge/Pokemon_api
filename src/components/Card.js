@@ -1,12 +1,23 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import { Button, Card, CardMedia, Typography } from "@mui/material";
+import { Button, Card, CardMedia, Typography, TextField } from "@mui/material";
 
 export default function UserCard(){
 
     const [next, setNext] = useState(1)
 
+    const [search, setSearch] = useState()
+
+    const [searchpokemon, setSearchpokemon] = useState(null)
+
     const [pokemon, setPokemon] = useState(null)
+
+    useEffect(() => {
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${search}`).then((response) => {
+            setSearchpokemon({...response.data})
+
+        })
+    }, [searchpokemon]);
 
     useEffect(() => {
         axios.get(`https://pokeapi.co/api/v2/pokemon/${next}`).then((response) => {
@@ -21,10 +32,8 @@ export default function UserCard(){
             <div className="flex justify-center mt-4">
                     <div className="grid grid-cols-1 gap-1">
                             <div>
-
-                            </div>
-                            <div>
                                 <Card className="min-h-min">
+                                    <TextField className="mt-3 mb-3" label="Nome do Pokemon" variant="standard" size="small" onChange={(e) => setSearch(e.target.value)}/>
                                     <Typography className="capitalize" gutterBottom variant="h5" component="div">{pokemon?.name}</Typography>
                                     <div className="felx grid grid-cols-2 gap-3">
                                         <div className="ml-2">
@@ -66,7 +75,7 @@ export default function UserCard(){
                             </div>
                     </div>
                 </div>
-                <div className="flex justify-around m-4">
+                {!search && (<div className="flex justify-around m-4">
                     {next > 1 && (
                         <Button className="m-4" onClick={() => setNext(next > 1 && next - 1)} variant="contained">
                         Anterior
@@ -75,7 +84,7 @@ export default function UserCard(){
                     <Button className="m-4" onClick={() => setNext(next + 1)} variant="contained">
                         Proximo
                     </Button>
-                </div>
+                </div>)}
             </div>
         </>
     );
